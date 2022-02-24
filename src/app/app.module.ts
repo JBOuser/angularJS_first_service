@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ModalServiceService } from './services/modal-service.service';
+import { ModalServiceService } from './services/modal/modal-service.service';
+import { EmployeesDataServiceService } from './services/employees-data/employees-data-service.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import { ModalServiceService } from './services/modal-service.service';
     FormsModule
   ],
   entryComponents:[],
-  providers: [ModalServiceService],
+  providers: [
+    ModalServiceService,
+    EmployeesDataServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

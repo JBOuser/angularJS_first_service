@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EmployeeClass } from './models/employee-class';
-import { ModalServiceService } from './services/modal-service.service';
+import { EmployeesDataServiceService } from './services/employees-data/employees-data-service.service';
+import { ModalServiceService } from './services/modal/modal-service.service';
 
 @Component({
   selector: 'app-root',
@@ -24,17 +25,26 @@ export class AppComponent {
   @Output() employeesChange = new EventEmitter<EmployeeClass>();
   
   //ModalServiceService is injected
-  constructor(private modalService:ModalServiceService){
-
+  constructor(
+    private modalService:ModalServiceService,
+    private employeesDataService:EmployeesDataServiceService
+  ){
+    //get all employees from service
+    //this.employees = this.employeesDataService.getAllEmployess();
   }
 
   ngOnInit(): void {
+    /*
     this.employees = [
       new EmployeeClass("1","Kasumi","","Warrior",2700.0),
       new EmployeeClass("2","Ryu","Hayabusa","Leader",3000.0),
       new EmployeeClass("3","Hayate","","Leader",2700.0),
       new EmployeeClass("4","Ayane","","Warrior",2400.0)
     ];
+    */
+
+    //get all employees from service
+    this.employees = this.employeesDataService.getAllEmployess();
   }
 
   //Add an Employee
