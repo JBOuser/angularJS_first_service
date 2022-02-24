@@ -8,7 +8,8 @@ export class ModalServiceService {
 
   constructor() { }
 
-  showAlert(title:string, content:string ){
-    alert(`${title}\n${content}`)
+  showConfirmation(title:string, content:string ){
+    //alert(`${title}\n${content}`)
+    return confirm(`${title}\n${content}`)
   }
 }

@@ -48,13 +48,13 @@ export class AppComponent {
       data.salary
     )
 
-    //use the injected service
-    this.modalService.showAlert(
+      //use the injected service. return true or false
+    if(this.modalService.showConfirmation(
       `New Addition`,
       `Employee "${newEmployee.getName()}" is added`
-    )
-
-    this.employees.push(newEmployee);
+    ) === true){
+      this.employees.push(newEmployee);
+    }
   }
 
   //Clean inputs data
@@ -68,7 +68,14 @@ export class AppComponent {
 
   //Delete an Employee
   onDelete(employeeObject:EmployeeClass){
-    var indexObject = this.employees.indexOf(employeeObject);
-    var deletedEmployee = this.employees.splice(indexObject,1);
+
+      //use the injected service. return true or false
+      if(this.modalService.showConfirmation(
+        `Delete Action`,
+        `Employee "${employeeObject.getName()}" will be deleted`
+      ) === true){
+        var indexObject = this.employees.indexOf(employeeObject);
+        var deletedEmployee = this.employees.splice(indexObject,1);    
+      }
   }
 }
